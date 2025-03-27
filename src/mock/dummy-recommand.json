@@ -1,0 +1,35 @@
+[
+  {
+    "id": 1007127,
+    "title": "댓글부대",
+    "releaseDate": "2024-03-27",
+    "company": "Cinematic Moment",
+    "genres": ["범죄", "드라마"],
+    "subTitle": "인터넷에서 본 글 어디까지 믿으세요?",
+    "description": "실력 있지만 허세 가득한 사회부 기자 임상진.  대기업 만전의 비리를 취재하지만 오보로 판명되며 정직당한다. 그러던 어느 날, 온라인 여론을 조작했다는 의문의 제보자가 찾아오는데…",
+    "runtime": 109,
+    "posterImgUrl": "https://media.themoviedb.org/t/p/w300_and_h450_face/eR7ybceTRhBFjsdlshXqAAihBFg.jpg"
+  },
+  {
+    "id": 533535,
+    "title": "데드풀과 울버린",
+    "releaseDate": "2024-07-24",
+    "company": "Marvel Studios, Maximum Effort, 21 Laps Entertainment, 20th Century Studios, Kevin Feige Productions, TSG Entertainment",
+    "genres": ["액션", "코미디", "SF"],
+    "subTitle": "",
+    "description": "히어로 생활에서 은퇴한 후, 평범한 중고차 딜러로 살아가던 ‘데드풀’이 예상치 못한 거대한 위기를 맞아 모든 면에서 상극인 ‘울버린’을 찾아가게 되며 펼쳐지는 도파민 폭발 액션 블록버스터.",
+    "runtime": 128,
+    "posterImgUrl": "https://media.themoviedb.org/t/p/w300_and_h450_face/4Zb4Z2HjX1t5zr1qYOTdVoisJKp.jpg"
+  },
+  {
+    "id": 838209,
+    "title": "파묘",
+    "releaseDate": "2024-02-22",
+    "company": "Showbox, MCMC, Pinetown Production",
+    "genres": ["미스터리", "공포", "스릴러"],
+    "subTitle": "험한 것이 나왔다",
+    "description": "미국 LA, 거액의 의뢰를 받은 무당 화림과 봉길은 기이한 병이 대물림되는 집안의 장손을 만난다. 조상의 묫자리가 화근임을 알아챈 화림은 이장을 권하고, 돈 냄새를 맡은 최고의 풍수사 상덕과 장의사 영근이 합류한다. 절대 사람이 묻힐 수 없는 악지에 자리한 기이한 묘. 상덕은 불길한 기운을 느끼고 제안을 거절하지만, 화림의 설득으로 결국 파묘가 시작되고… 나와서는 안될 것이 나왔다.",
+    "runtime": 133,
+    "posterImgUrl": "https://media.themoviedb.org/t/p/w300_and_h450_face/tw0i3kkmOTjDjGFZTLHKhoeXVvA.jpg"
+  }
+]

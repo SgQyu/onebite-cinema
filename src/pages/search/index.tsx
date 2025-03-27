@@ -1,12 +1,28 @@
+import SearchResultMovieItems from '@/components/movie-item-search-result';
 import SearchbarLayout from '@/components/searchbar-layout';
-import { useRouter } from 'next/router';
 import { ReactNode } from 'react';
+import allMovies from '@/mock/dummy-all.json';
+import { useRouter } from 'next/router';
 
 export default function Page() {
   const router = useRouter();
-  const q = router.query.q;
+  const q = router.query.q as string;
 
-  return <h2>검색 결과 : {q}</h2>;
+  const filterMovie = () => {
+    return allMovies.filter((movie): string | boolean =>
+      movie.title.includes(q)
+    );
+  };
+
+  const filterMovieData = filterMovie();
+
+  return (
+    <div>
+      {filterMovieData.map((movie) => (
+        <SearchResultMovieItems key={movie.id} {...movie} />
+      ))}
+    </div>
+  );
 }
 
 Page.getLayout = (page: ReactNode) => {
