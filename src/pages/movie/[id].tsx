@@ -1,19 +1,33 @@
 import style from '@/pages/movie/[id].module.css';
-import allMovies from '@/mock/dummy-all.json';
+import { GetServerSidePropsContext, InferGetStaticPropsType } from 'next';
+import fetchMovieOne from '@/lib/fetch-movie-one';
 
-export default function Page() {
-  const [
-    {
-      posterImgUrl,
-      title,
-      releaseDate,
-      genres,
-      runtime,
-      company,
-      subTitle,
-      description,
-    },
-  ] = allMovies;
+export const getServerSideProps = async (
+  context: GetServerSidePropsContext
+) => {
+  const id = context.params!.id;
+  const oneMovie = await fetchMovieOne(Number(id));
+
+  return {
+    props: { oneMovie },
+  };
+};
+
+export default function Page({
+  oneMovie,
+}: InferGetStaticPropsType<typeof getServerSideProps>) {
+  if (!oneMovie) return '문제가 발생했습니다. 다시 시도해주세요';
+
+  const {
+    posterImgUrl,
+    title,
+    releaseDate,
+    genres,
+    runtime,
+    company,
+    subTitle,
+    description,
+  } = oneMovie;
   return (
     <div className={style.container}>
       <div

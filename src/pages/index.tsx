@@ -1,17 +1,32 @@
 import SearchbarLayout from '@/components/searchbar-layout';
 
 import { ReactNode } from 'react';
-import allMovies from '@/mock/dummy-all.json';
-import recommendsMovies from '@/mock/dummy-recommand.json';
 import RecommandMovieItems from '@/components/movie-item-recommand';
 import AllMovieItems from '@/components/movie-item-all';
+import fetchMovieAll from '@/lib/fetch-movie-all';
+import { InferGetServerSidePropsType } from 'next';
+import fetchMovieRecommand from '@/lib/fetch-movie-recommand';
 
-export default function Home() {
+export const getServerSideProps = async () => {
+  const [allMovies, recommendMovies] = await Promise.all([
+    fetchMovieAll(),
+    fetchMovieRecommand(),
+  ]);
+
+  return {
+    props: { allMovies, recommendMovies },
+  };
+};
+
+export default function Home({
+  allMovies,
+  recommendMovies,
+}: InferGetServerSidePropsType<typeof getServerSideProps>) {
   return (
     <div>
       <section>
         <h3>지금 가장 추천하는 영화</h3>
-        {recommendsMovies.map((movie) => (
+        {recommendMovies.map((movie) => (
           <RecommandMovieItems key={movie.id} {...movie} />
         ))}
       </section>
