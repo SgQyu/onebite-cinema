@@ -4,10 +4,20 @@ import { ReactNode } from 'react';
 import RecommandMovieItems from '@/components/movie-item-recommand';
 import AllMovieItems from '@/components/movie-item-all';
 import fetchMovieAll from '@/lib/fetch-movie-all';
-import { InferGetServerSidePropsType } from 'next';
+import { InferGetStaticPropsType } from 'next';
 import fetchMovieRecommand from '@/lib/fetch-movie-recommand';
 
-export const getServerSideProps = async () => {
+// export const getServerSideProps = async () => {
+//   const [allMovies, recommendMovies] = await Promise.all([
+//     fetchMovieAll(),
+//     fetchMovieRecommand(),
+//   ]);
+
+//   return {
+//     props: { allMovies, recommendMovies },
+//   };
+// };
+export const getStaticProps = async () => {
   const [allMovies, recommendMovies] = await Promise.all([
     fetchMovieAll(),
     fetchMovieRecommand(),
@@ -18,10 +28,13 @@ export const getServerSideProps = async () => {
   };
 };
 
+// 컴포넌트 Type
+// SSR : InferGetServerSidePropsType<typeof getServerSideProps>
+// SSG : InferGetStaticPropsType<typeof getStaticProps>
 export default function Home({
   allMovies,
   recommendMovies,
-}: InferGetServerSidePropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <div>
       <section>

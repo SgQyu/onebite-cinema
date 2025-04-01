@@ -1,5 +1,13 @@
 # Onebite Cinema
 
+## Ver. 1.4.0 (2025.04.02)
+
+- index, movie 페이지 SSR -> SSG로 변경
+- movie 페이지의 fallback 옵션을 true로 설정
+  <br>
+  <br>
+  <br>
+
 ## Ver. 1.3.0 (2025.03.31)
 
 - API 데이터 최신화

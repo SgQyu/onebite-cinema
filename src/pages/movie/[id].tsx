@@ -1,10 +1,32 @@
 import style from '@/pages/movie/[id].module.css';
-import { GetServerSidePropsContext, InferGetStaticPropsType } from 'next';
+import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import fetchMovieOne from '@/lib/fetch-movie-one';
+import { useRouter } from 'next/router';
 
-export const getServerSideProps = async (
-  context: GetServerSidePropsContext
-) => {
+// export const getServerSideProps = async (
+//   context: GetServerSidePropsContext
+// ) => {
+//   const id = context.params!.id;
+//   const oneMovie = await fetchMovieOne(Number(id));
+
+//   return {
+//     props: { oneMovie },
+//   };
+// };
+
+export const getStaticPaths = () => {
+  return {
+    paths: [
+      { params: { id: '1' } },
+      { params: { id: '2' } },
+      { params: { id: '3' } },
+      { params: { id: '4' } },
+    ],
+    fallback: true,
+  };
+};
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
   const id = context.params!.id;
   const oneMovie = await fetchMovieOne(Number(id));
 
@@ -15,7 +37,9 @@ export const getServerSideProps = async (
 
 export default function Page({
   oneMovie,
-}: InferGetStaticPropsType<typeof getServerSideProps>) {
+}: InferGetStaticPropsType<typeof getStaticProps>) {
+  const router = useRouter();
+  if (router.isFallback) return '로딩 중.....';
   if (!oneMovie) return '문제가 발생했습니다. 다시 시도해주세요';
 
   const {
