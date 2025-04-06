@@ -1,10 +1,14 @@
 import { MovieData } from '@/type';
 
-const fetchMovieAll = async (q?: string): Promise<MovieData[]> => {
-  let url = `http://localhost:12345/movie`;
+const fetchMovieAll = async (q?: string, id?: number): Promise<MovieData[]> => {
+  let url = `https://onebite-cinema-sever.vercel.app/movie`;
 
   if (q) {
     url += `/search?q=${q}`;
+  }
+
+  if (id) {
+    url = `https://onebite-cinema-sever.vercel.app/movie/${id}`;
   }
 
   try {

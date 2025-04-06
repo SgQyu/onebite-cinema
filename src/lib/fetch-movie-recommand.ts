@@ -1,7 +1,7 @@
 import { MovieData } from '@/type';
 
 const fetchMovieRecommand = async (): Promise<MovieData[]> => {
-  const url = `http://localhost:12345/movie/random`;
+  const url = `https://onebite-cinema-sever.vercel.app/movie/random`;
 
   try {
     const response = await fetch(url);

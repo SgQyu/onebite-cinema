@@ -1,5 +1,13 @@
 # Onebite Cinema
 
+## Ver. 1.5.0 (2025.04.06)
+
+- index 페이지 SSG -> ISR로 변경
+- 백엔드 서버 및 페이지 vercel 배포 완료
+  <br>
+  <br>
+  <br>
+
 ## Ver. 1.4.0 (2025.04.02)
 
 - index, movie 페이지 SSR -> SSG로 변경

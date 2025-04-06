@@ -2,6 +2,9 @@ import style from '@/pages/movie/[id].module.css';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import fetchMovieOne from '@/lib/fetch-movie-one';
 import { useRouter } from 'next/router';
+import Head from 'next/head';
+
+// import { MovieData } from '@/type';
 
 // export const getServerSideProps = async (
 //   context: GetServerSidePropsContext
@@ -14,7 +17,7 @@ import { useRouter } from 'next/router';
 //   };
 // };
 
-export const getStaticPaths = () => {
+export const getStaticPaths = async () => {
   return {
     paths: [
       { params: { id: '1' } },
@@ -53,20 +56,28 @@ export default function Page({
     description,
   } = oneMovie;
   return (
-    <div className={style.container}>
-      <div
-        style={{ backgroundImage: `url('${posterImgUrl}')` }}
-        className={style.cover_img_container}
-      >
-        <img src={posterImgUrl} alt={title} />
+    <>
+      <Head>
+        <title>{title}</title>
+        <meta property="og:image" content={posterImgUrl} />
+        <meta property="og:title" content={title} />
+        <meta property="og:description" content={description} />
+      </Head>
+      <div className={style.container}>
+        <div
+          style={{ backgroundImage: `url('${posterImgUrl}')` }}
+          className={style.cover_img_container}
+        >
+          <img src={posterImgUrl} alt={title} />
+        </div>
+        <h2 className={style.title}>{title}</h2>
+        <div>
+          {releaseDate} / {genres.join(', ')} / {runtime}분
+        </div>
+        <div className={style.company}>{company}</div>
+        <div className={style.subTitle}>{subTitle}</div>
+        <div className={style.description}>{description}</div>
       </div>
-      <h2 className={style.title}>{title}</h2>
-      <div>
-        {releaseDate} / {genres.join(', ')} / {runtime}분
-      </div>
-      <div className={style.company}>{company}</div>
-      <div className={style.subTitle}>{subTitle}</div>
-      <div className={style.description}>{description}</div>
-    </div>
+    </>
   );
 }
